@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { concatMap, filter, finalize, flatMap, map, Observable, tap } from 'rxjs';
+import { concatMap, filter, finalize, flatMap, map, mergeMap, Observable, tap } from 'rxjs';
 import { ReqResResponse, ReqResService, User } from './req-res.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'common-rxjs-operators';
@@ -31,14 +31,13 @@ export class AppComponent {
     this.reqResService.getUserList().pipe(
       map((response: ReqResResponse) => response.data),
       // tap((value) => console.log(value)),
-      flatMap((value) => value),
+      mergeMap((value) => value),
       // tap((value) => console.log(value)),
       filter((user: User, index: number) => user.id === id),
       // tap((value) => console.log(value)),
       finalize(()=>{
         this.isConcatMapBtn = false;
-      })
-      )
+      }))
       // concatMap((userList: User[]) => this.reqResService.getUser(userList[0].id)),
       .subscribe({
         next: (user: User) => {
