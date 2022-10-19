@@ -29,4 +29,8 @@ export class ReqResService {
   public getUserList(page:number = 2): Observable<ReqResResponse> {
     return this.http.get<ReqResResponse>(`${this.url}users?page=${page}`);
   }
+
+  public getUser(user: number):Observable<User>{
+    return this.http.get<User>(`${this.url}${user}`);
+  }
 }
