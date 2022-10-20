@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+
 export interface User {
   id: number;
   email: string;
@@ -10,6 +11,14 @@ export interface User {
   last_name: string;
   avatar: string;
 }
+export interface UserResponse {
+  data: User,
+  support: {
+      url: string;
+      text: string;
+  }
+}
+
 
 export interface ReqResResponse {
   page:number;
@@ -30,7 +39,7 @@ export class ReqResService {
     return this.http.get<ReqResResponse>(`${this.url}users?page=${page}`);
   }
 
-  public getUser(user: number):Observable<User>{
-    return this.http.get<User>(`${this.url}${user}`);
+  public getUser(userId: number):Observable<UserResponse>{
+    return this.http.get<UserResponse>(`${this.url}users/${userId}`);
   }
 }
