@@ -1,18 +1,22 @@
-<mat-tab-group backgroundColor="primary" color="accent" >
-  <mat-tab label="Users List" >
+<mat-tab-group backgroundColor="primary" color="accent">
+  <!-- Users List Tab -->
+  <mat-tab label="Users List">
     <ng-template matTabContent class="matTab">
       <app-users></app-users>
     </ng-template>
   </mat-tab>
+
+  <!-- User Tab -->
   <mat-tab label="User">
     <ng-template matTabContent class="matTab">
       <app-user></app-user>
     </ng-template>
   </mat-tab>
+
+  <!-- User Table -->
+  <mat-tab label="Users Table">
+    <ng-template matTabContent class="matTab">
+      <app-users-table></app-users-table>
+    </ng-template>
+  </mat-tab>
 </mat-tab-group>
-
-
-<!-- Code for  Map Operator -->
-
-
-<!-- Code For  ConcatMap-->
