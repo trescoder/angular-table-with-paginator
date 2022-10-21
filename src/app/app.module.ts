@@ -7,17 +7,24 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatButton, MatButtonModule } from "@angular/material/button";
+import {MatTab, MatTabsModule} from '@angular/material/tabs';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/user/user.component';
 
 const MaterialModule = [
-  MatButtonModule
+  MatButtonModule,
+  MatTabsModule
 ];
 const MaterialComponents = [
-  MatButton
+  MatButton,
+  MatTab
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
+    UsersComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
